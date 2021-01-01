@@ -1,0 +1,12 @@
+:root {
+  --bunker: #1f2833;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--bunker);
+}
