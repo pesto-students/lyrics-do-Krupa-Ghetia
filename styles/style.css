@@ -2,6 +2,7 @@
   --bunker: #1f2833;
   --cyan: #66fcf1;
   --white: #ffffff;
+  --dark-cyan: #45a29e;
 }
 
 html {
@@ -42,4 +43,24 @@ input[type="text"] {
 
 .search-bar:focus {
   outline: none;
+}
+
+.search-btn {
+  background-color: var(--cyan);
+  margin-top: 1.5rem;
+  border-radius: 7px;
+  padding: 0.3rem 0.7rem;
+  font-size: 1.5rem;
+}
+
+.search-btn:focus {
+  outline: none;
+}
+
+button[type="submit"] {
+  border: none;
+}
+
+button[type="submit"]:hover {
+  cursor: pointer;
 }
