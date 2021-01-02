@@ -1,5 +1,7 @@
 :root {
   --bunker: #1f2833;
+  --cyan: #66fcf1;
+  --white: #ffffff;
 }
 
 html {
@@ -9,4 +11,35 @@ html {
 body {
   height: 100%;
   background-color: var(--bunker);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 85%;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  color: var(--cyan);
+  margin-bottom: 3rem;
+  font-size: 7rem;
+  font-family: "Ribeye Marrow", cursive;
+}
+
+input[type="text"] {
+  border: none;
+}
+
+.search-bar {
+  background-color: var(--white);
+  width: 45rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 25px;
+}
+
+.search-bar:focus {
+  outline: none;
 }
