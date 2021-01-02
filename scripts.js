@@ -3,6 +3,7 @@ const container = document.querySelector("#container");
 const searchBar = document.querySelector("#search-bar");
 const searchBtn = document.querySelector("#search-btn");
 const logo = document.querySelector("#logo");
+const root = document.querySelector("#root");
 
 
 const fetchSuggestions = async function (searchValue) {
@@ -10,6 +11,20 @@ const fetchSuggestions = async function (searchValue) {
     const response = await fetch(url)
     return response.json();
 };
+
+const clearRoot = function () {
+    root.removeAttribute('class');
+    root.innerHTML = "";
+}
+
+const showLoader = function () {
+    clearRoot();
+
+    const loaderTemplate = "<div class='loader display'></div>";
+    root.classList.add("display-loader");
+    root.classList.add("display");
+    root.innerHTML = loaderTemplate;
+}
 
 const moveSearch = function () {
     mainContainer.classList.remove("display");
@@ -33,6 +48,7 @@ const search = async function () {
     }
     
     moveSearch();
+    showLoader();
 
     const response = await fetchSuggestions(searchValue);
     const suggestions = response["data"].map((suggestion) => {
