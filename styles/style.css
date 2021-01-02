@@ -3,6 +3,7 @@
   --cyan: #66fcf1;
   --white: #ffffff;
   --dark-cyan: #45a29e;
+  --red: #ff0000;
 }
 
 html {
@@ -14,12 +15,29 @@ body {
   background-color: var(--bunker);
 }
 
-.container {
+.display {
   display: flex;
-  flex-direction: column;
-  min-height: 85%;
   justify-content: center;
   align-items: center;
+}
+
+.main-container {
+  margin: 0rem 7rem;
+  min-height: 95%;
+}
+
+.container {
+  flex-direction: column;
+  min-height: 95%;
+}
+
+.container-shrink {
+  display: flex;
+  min-height: 30%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0rem;
+  border-bottom: 5px dotted var(--red);
 }
 
 .logo {
@@ -29,8 +47,10 @@ body {
   font-family: "Ribeye Marrow", cursive;
 }
 
-input[type="text"] {
-  border: none;
+.logo-shrink {
+  color: var(--cyan);
+  font-size: 2.5rem;
+  font-family: "Ribeye Marrow", cursive;
 }
 
 .search-bar {
@@ -41,10 +61,6 @@ input[type="text"] {
   border-radius: 25px;
 }
 
-.search-bar:focus {
-  outline: none;
-}
-
 .search-btn {
   background-color: var(--cyan);
   margin-top: 1.5rem;
@@ -53,11 +69,18 @@ input[type="text"] {
   font-size: 1.5rem;
 }
 
-.search-btn:focus {
+.search-btn-shrink {
+  background-color: var(--cyan);
+  border-radius: 7px;
+  padding: 0.3rem 0.7rem;
+  font-size: 1.5rem;
+}
+
+.no-outline:focus {
   outline: none;
 }
 
-button[type="submit"] {
+.no-border {
   border: none;
 }
 
