@@ -5,6 +5,9 @@ const searchBtn = document.querySelector("#search-btn");
 const logo = document.querySelector("#logo");
 const root = document.querySelector("#root");
 
+let resultantSuggestions;
+let paginationTemplate;
+
 
 const fetchSuggestions = async function (searchValue) {
     const url = `https://api.lyrics.ovh/suggest/${searchValue}`;
@@ -26,10 +29,46 @@ const showLoader = function () {
     root.innerHTML = loaderTemplate;
 }
 
-const renderSuggestions = function (suggestions) {
+const createChunks = function (suggestions) {
+    const chunkSize = 4;
+
+    const result = suggestions.reduce((resultantArray, suggestion, index) => {
+        const chunkIndex = Math.floor(index / chunkSize);
+
+        if(!resultantArray[chunkIndex]) {
+            resultantArray[chunkIndex] = [];
+        }
+
+        resultantArray[chunkIndex].push(suggestion);
+
+        return resultantArray;
+    }, []);
+
+    return result;
+}
+
+const createPages = function () {
+    let pages = '';
+    for(let index=0; index< resultantSuggestions.length; index++) {
+        pages += `<div id="${index}" class="page">${index + 1}</div>`;
+    }
+    
+    paginationTemplate = `<div id="pagination" class="pagination display">${pages}</div>`
+}
+
+const addPaginationListeners = function () {
+    document.querySelectorAll(".page").forEach(item => {
+        item.addEventListener("click", event => {
+            renderSuggestions(item.id);
+        });
+    });
+}
+
+const renderSuggestions = function (chunkTodisplay=0) {
     clearRoot();
 
-    const suggestionTemplate = suggestions.map((suggestion) => {
+    const suggestionsTodisplay = resultantSuggestions[chunkTodisplay]
+    const suggestionTemplate = suggestionsTodisplay.map((suggestion) => {
         const { lyricsTitle, lyricsPreview, artistName, albumCover } = suggestion;
 
         return `<div class="suggestion">
@@ -53,6 +92,10 @@ const renderSuggestions = function (suggestions) {
 
     root.classList.add("root");
     root.innerHTML = suggestionTemplate;
+    root.innerHTML += paginationTemplate;
+    document.getElementById(`${chunkTodisplay}`).classList.add("page-selected");
+
+    addPaginationListeners();
 }
 
 const moveSearch = function () {
@@ -91,7 +134,9 @@ const search = async function () {
         }
     });
 
-    renderSuggestions(suggestions);
+    resultantSuggestions = createChunks(suggestions);
+    createPages();
+    renderSuggestions();
 }
 
 searchBtn.addEventListener("click", search);

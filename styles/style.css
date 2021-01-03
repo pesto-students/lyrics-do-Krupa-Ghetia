@@ -114,17 +114,17 @@ button[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0.2rem;
+  margin: 1.25rem 0.2rem;
   padding: 0.5rem 0.2rem;
   width: 15rem;
-  min-height: 19.5rem;
+  min-height: 22rem;
   border: 1.5px solid var(--white);
   border-radius: 5px;
 }
 
 .suggestion img {
   width: 85%;
-  margin: 1rem;
+  margin: 1.5rem;
 }
 
 .title {
@@ -149,6 +149,30 @@ button[type="submit"]:hover {
 .audio-preview a {
   color: var(--cyan);
   font-family: "Roboto", sans-serif;
+}
+
+.pagination {
+  border-top: 5px dotted var(--red);
+  margin-top: 1.25rem;
+  width: 100%;
+}
+
+.page {
+  color: var(--cyan);
+  margin: 1rem;
+  padding: 0.6rem 0.7rem;
+  border: 1.5px solid var(--cyan);
+  border-radius: 5px;
+}
+
+.page:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page-selected {
+  color: var(--white);
+  border: 1.5px solid var(--white);
 }
 
 @keyframes spin {
