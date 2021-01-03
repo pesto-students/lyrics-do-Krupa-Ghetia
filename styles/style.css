@@ -35,6 +35,7 @@ body {
 .container {
   flex-direction: column;
   min-height: 95%;
+  width: 100%;
 }
 
 .container-shrink {
@@ -57,6 +58,11 @@ body {
   color: var(--cyan);
   font-size: 2.5rem;
   font-family: "Ribeye Marrow", cursive;
+}
+
+.search {
+  width: 100%;
+  text-align: center;
 }
 
 .search-bar {
@@ -199,5 +205,106 @@ button[type="submit"]:hover {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1060px) {
+  .main-container {
+    margin: 0rem 5rem;
+    min-height: 95%;
+  }
+
+  .container-shrink {
+    display: flex;
+    flex-direction: column;
+    min-height: 30%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    border-bottom: 5px dotted var(--red);
+  }
+
+  .search {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-bar {
+    background-color: var(--white);
+    width: 90%;
+    margin: 1rem 0;
+    padding: 0.6rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 560px) {
+  .main-container {
+    margin: 0rem 0.7rem;
+    min-height: 95%;
+  }
+
+  .container-shrink {
+    display: flex;
+    flex-direction: column;
+    min-height: 30%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    border-bottom: 5px dotted var(--red);
+  }
+
+  .search {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-bar {
+    background-color: var(--white);
+    width: 18rem;
+    margin: 1rem 0;
+    padding: 0.4rem 1rem;
+    font-size: 1.3rem;
+    border-radius: 25px;
+  }
+
+  .logo-shrink {
+    color: var(--cyan);
+    font-size: 1.9rem;
+    font-family: "Ribeye Marrow", cursive;
+  }
+
+  .search-btn-shrink {
+    background-color: var(--cyan);
+    border-radius: 7px;
+    padding: 0.15rem 0.4rem;
+    font-size: 1.1rem;
+  }
+
+  .lyrics {
+    color: var(--white);
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .logo {
+    color: var(--cyan);
+    margin-bottom: 2rem;
+    font-size: 5rem;
+    font-family: "Ribeye Marrow", cursive;
+  }
+}
+
+@media (max-width: 560px) {
+  .logo {
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+    font-family: "Ribeye Marrow", cursive;
   }
 }
