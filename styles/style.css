@@ -102,6 +102,55 @@ button[type="submit"]:hover {
   animation: spin 2s linear infinite;
 }
 
+.root {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0rem;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0.2rem;
+  padding: 0.5rem 0.2rem;
+  width: 15rem;
+  min-height: 19.5rem;
+  border: 1.5px solid var(--white);
+  border-radius: 5px;
+}
+
+.suggestion img {
+  width: 85%;
+  margin: 1rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.artist {
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.audio-preview {
+  text-align: center;
+}
+
+.audio-preview a {
+  color: var(--cyan);
+  font-family: "Roboto", sans-serif;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

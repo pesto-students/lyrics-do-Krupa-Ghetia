@@ -26,6 +26,35 @@ const showLoader = function () {
     root.innerHTML = loaderTemplate;
 }
 
+const renderSuggestions = function (suggestions) {
+    clearRoot();
+
+    const suggestionTemplate = suggestions.map((suggestion) => {
+        const { lyricsTitle, lyricsPreview, artistName, albumCover } = suggestion;
+
+        return `<div class="suggestion">
+        <img
+          src="${albumCover}"
+          alt="Album Cover"
+        />
+        <div>
+          <h4 class="title">${lyricsTitle}</h4>
+          <p class="artist">${artistName}</p>
+          <p class="audio-preview">
+            <a
+              href="${lyricsPreview}"
+              target="_blank"
+              >Song Preview</a
+            >
+          </p>
+        </div>
+      </div>`
+    });
+
+    root.classList.add("root");
+    root.innerHTML = suggestionTemplate;
+}
+
 const moveSearch = function () {
     mainContainer.classList.remove("display");
 
@@ -58,10 +87,11 @@ const search = async function () {
             lyricsTitle: title,
             lyricsPreview: preview,
             artistName: artist.name,
-            albumTitle: album.title,
-            albumCover: album.cover
+            albumCover: album.cover_medium
         }
     });
+
+    renderSuggestions(suggestions);
 }
 
 searchBtn.addEventListener("click", search);
