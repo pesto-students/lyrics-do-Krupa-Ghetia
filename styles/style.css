@@ -4,6 +4,7 @@
   --white: #ffffff;
   --dark-cyan: #45a29e;
   --red: #ff0000;
+  --light-grey: #f3f3f3;
 }
 
 html {
@@ -95,7 +96,7 @@ button[type="submit"]:hover {
 
 .loader {
   border: 16px solid var(--bunker);
-  border-top: 16px solid #f3f3f3;
+  border-top: 16px solid var(--light-grey);
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -108,6 +109,11 @@ button[type="submit"]:hover {
   margin: 1rem 0rem;
   height: auto;
   flex-wrap: wrap;
+}
+
+.request-error-empty {
+  color: var(--light-grey);
+  font-size: 3rem;
 }
 
 .suggestion {

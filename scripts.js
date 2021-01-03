@@ -15,6 +15,20 @@ const fetchSuggestions = async function (searchValue) {
     return response.json();
 };
 
+const handleRequestError = function () {
+    clearRoot();
+
+    root.classList.add("root");
+    root.innerHTML = `<p class="request-error-empty">Invalid Request!</p>`
+}
+
+const handleEmptyResponse = function () {
+    clearRoot();
+
+    root.classList.add("root");
+    root.innerHTML = `<p class="request-error-empty">Artist/Title not found!</p>`
+}
+
 const clearRoot = function () {
     root.removeAttribute('class');
     root.innerHTML = "";
@@ -123,6 +137,17 @@ const search = async function () {
     showLoader();
 
     const response = await fetchSuggestions(searchValue);
+
+    if (response.hasOwnProperty('error')) {
+        handleRequestError();
+        return;
+    }
+
+    if (response["data"].length === 0) {
+        handleEmptyResponse();
+        return;
+    }
+
     const suggestions = response["data"].map((suggestion) => {
         const { title, preview, artist, album } = suggestion;
 
