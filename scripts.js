@@ -11,9 +11,15 @@ let paginationTemplate;
 
 const fetchSuggestions = async function (searchValue) {
     const url = `https://api.lyrics.ovh/suggest/${searchValue}`;
-    const response = await fetch(url)
+    const response = await fetch(url);
     return response.json();
 };
+
+const fetchLyrics = async function (artist, title) {
+    const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+    const response = await fetch(url);
+    return response.json();
+}
 
 const handleRequestError = function () {
     clearRoot();
@@ -27,6 +33,13 @@ const handleEmptyResponse = function () {
 
     root.classList.add("root");
     root.innerHTML = `<p class="request-error-empty">Artist/Title not found!</p>`
+}
+
+const handleEmptyLyrics = function () {
+    clearRoot();
+
+    root.classList.add("root");
+    root.innerHTML = `<p class="request-error-empty">Lyrics not found!</p>`
 }
 
 const clearRoot = function () {
@@ -70,12 +83,44 @@ const createPages = function () {
     paginationTemplate = `<div id="pagination" class="pagination display">${pages}</div>`
 }
 
+const addSuggestionListeners = function () {
+    
+    document.querySelectorAll(".suggestion").forEach(item => {
+        item.addEventListener("click", async event => {
+            if (event.target.tagName === "A") {
+                return;
+            }
+
+            const artist = item.querySelector(".artist").textContent;
+            const title = item.querySelector(".title").textContent;
+
+            showLoader();
+
+            const response = await fetchLyrics(artist, title);
+            if (response["lyrics"] === "") {
+                handleEmptyLyrics();
+                return;
+            }
+
+            renderLyrics(response["lyrics"]);
+        });
+    });
+}
+
 const addPaginationListeners = function () {
     document.querySelectorAll(".page").forEach(item => {
         item.addEventListener("click", event => {
             renderSuggestions(item.id);
         });
     });
+}
+
+const renderLyrics = function (lyrics) {
+    clearRoot();
+
+    console.log(lyrics);
+    root.classList.add("root");
+    root.innerHTML = `<pre class="lyrics">${lyrics}</pre>`;
 }
 
 const renderSuggestions = function (chunkTodisplay=0) {
@@ -109,6 +154,7 @@ const renderSuggestions = function (chunkTodisplay=0) {
     root.innerHTML += paginationTemplate;
     document.getElementById(`${chunkTodisplay}`).classList.add("page-selected");
 
+    addSuggestionListeners();
     addPaginationListeners();
 }
 

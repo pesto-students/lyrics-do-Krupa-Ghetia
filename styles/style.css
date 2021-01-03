@@ -128,6 +128,10 @@ button[type="submit"]:hover {
   border-radius: 5px;
 }
 
+.suggestion:hover {
+  cursor: pointer;
+}
+
 .suggestion img {
   width: 85%;
   margin: 1.5rem;
@@ -179,6 +183,14 @@ button[type="submit"]:hover {
 .page-selected {
   color: var(--white);
   border: 1.5px solid var(--white);
+}
+
+.lyrics {
+  color: var(--white);
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 @keyframes spin {
