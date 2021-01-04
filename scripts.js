@@ -200,7 +200,7 @@ const search = async function () {
             lyricsTitle: title,
             lyricsPreview: preview,
             artistName: artist.name,
-            albumCover: album.cover_medium
+            albumCover: album.cover
         }
     });
 
