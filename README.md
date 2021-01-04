@@ -35,3 +35,7 @@ https://api.lyrics.ovh/suggest/inputQuery
 # Commands
 
 - Run `npm run develop` to run app locally
+
+# Deployed link
+
+https://lyrics-do.netlify.app/
