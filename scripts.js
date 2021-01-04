@@ -118,7 +118,6 @@ const addPaginationListeners = function () {
 const renderLyrics = function (lyrics) {
     clearRoot();
 
-    console.log(lyrics);
     root.classList.add("root");
     root.innerHTML = `<pre class="lyrics">${lyrics}</pre>`;
 }
